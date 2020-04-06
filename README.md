@@ -19,7 +19,6 @@ The architecture of the chatbot can be divided in two modules:
 - **machine learning module**, written in Python using TensorFlow and tflearn: the module uses custom Italian libraries and 
 therefore Italian only is supported. However, these libraries can be easily swapped with other libraries.
 <br>
-This example uses pattern ricognition module:
-<br>
-
+This example uses pattern recognition module:
+<br><br>
 ![screen1](/static/images/chatbot1.gif)

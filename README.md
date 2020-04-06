@@ -25,7 +25,7 @@ Machine Learning module is based on a deep neural network, as shown in the pictu
 <br><br>
 <img src="/static/images/Neural Network.png" title="dnn" height="300">
 
-Nested topics are supported. You can restrict user's questions on a specific topic. More info on <a href="https://www.rivescript.com/">RiveScript site</a>
+Nested topics are supported. You can restrict user's questions on a specific topic. More info on <a href="https://www.rivescript.com/">RiveScript site</a><br>
 Multiple answers are supported in every language.
 <br><br>
 <img src="https://raw.githubusercontent.com/lucamadd/CognitiveChatbot/master/static/images/chatbot2.gif" title="chatbot2" height="400">

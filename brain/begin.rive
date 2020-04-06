@@ -1,0 +1,61 @@
+! version = 2.0
+
+// Bot variables
+! var name     = Cognitive Chatbot
+! var birthday = 11 novembre
+! var city     = Napoli
+! var color    = nero
+! var job      = chatbot
+
+//Substitutions
+! sub &quot;    = "
+! sub &apos;    = '
+! sub &amp;     = &
+! sub &lt;      = <
+! sub &gt;      = >
+! sub +         = piu
+! sub -         = meno
+! sub /         = diviso
+! sub *         = per
+! sub à         = a
+! sub è         = e
+! sub é         = e
+! sub ì         = i
+! sub ò         = o
+! sub ù         = u
+! sub €         = euro
+! sub a'        = a
+! sub e'        = e
+! sub i'        = i
+! sub o'        = o
+! sub u'        = u
+
+//Person substitutions
+! person io sono = tu sei
+! person sono    = sei
+! person mio     = tuo
+! person mia     = tua
+! person miei    = tuoi
+! person mie     = tue
+! person io      = tu
+! person me      = te
+! person tu sei  = io sono
+! person sei     = sono
+! person tuo     = mio
+! person tua     = mia
+! person tuoi    = miei
+! person tue     = mie
+! person tu      = io
+! person te      = me
+
+//Set arrays
+! array si = si sì yes yeah yep yup ya yea
+! array no = no nah nope nay
+! array mesi = gennaio febbraio marzo aprile maggio giugno luglio agosto settembre ottobre novembre dicembre
+
+> begin
+
+  + request
+  - {ok}
+
+< begin

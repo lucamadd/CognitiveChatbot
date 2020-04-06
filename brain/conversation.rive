@@ -1,0 +1,370 @@
+! version = 2.0
+
+//hello///////////////////////////////////////////////////////////////////////////////////////////
++ hello
+* <get name> != undefined => {random}Ciao|Salve|Bentornato{/random}, <get name>!
+- Ciao! Cosa posso fare per te?
+- Ciao utente! Come posso aiutarti?
+- Come posso aiutarti?
+- Ciao, come posso aiutarti?
+
++ [*] (ciao|piacere di conoscerti|buonasera|buongiorno|salve) [*]
+@ hello
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+//presentation////////////////////////////////////////////////////////////////////////////////////
++ presentation
+* <get name> == undefined => Io sono <bot name>. 
+- Ciao! Mi chiamo <bot name>.
+- Io sono <bot name>.
+
++ [*] (chi sei|come ti chiami|chi sei tu|presentati|tu saresti) [*]
+@ presentation
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
++ what time is it
+- <call>get_time</call>
+
++ [*] (che ore sono|che ora e|dimmi l'ora|sai dirmi l'ora|ora corrente|dimmi che ora e|dimmi che ore sono) [*]
+@ what time is it
+
+> object get_time python
+
+    from datetime import datetime
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S")
+    return current_time
+
+< object
+
+
+//how are you/////////////////////////////////////////////////////////////////////////////////////
++ how are you
+- Bene, grazie. 
+- Non c'è male. 
+- Tutto okay. 
+- Tutto ok, grazie.{weight=3}
+- Tutto bene.{weight=3}
+
++ [*] (come stai|tutto bene|stai bene|che si dice) [*]
+@ how are you
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
++ current day
+- <call>get_current_day</call>
+
++ [*] (che giorno e oggi|quanto ne abbiamo|data odierna|data di oggi) [*]
+@ current day
+
+> object get_current_day python
+
+    from datetime import datetime
+
+    current_day = datetime.today().strftime('%d-%m-%Y')
+    return f"Oggi è {current_day}"
+
+< object
+
++ argum1
+- Okay, scusa.
+- Non posso farci nulla, mi dispiace.
+- Posso fare altro per te?
+
++ [*] (sto perdendo tempo|perdere tempo|non posso perdere tempo|sei inutile|non servi) [*]
+@ argum1
+
++ argum2
+- Cerco di fare il possibile!
+- Lo so, lo so. Ci provo.
+- Ci provo!
+
++ [*] (puoi fare di meglio|c e di meglio) [*]
+@ argum2
+
++ argum3
+- Prova a pormi la domanda in modo diverso.
+- Prova a riformulare la domanda.
+- Non capisco, spiegati meglio.
+- Non so come aiutarti, davvero.
+- Se sapessi farlo ti aiuterei!
+- Mi dispiace, non so come aiutarti.
+
++ [*] (non so come fare|non ho capito|non capisco|dimmi come fare|come devo fare) [*]
+@ argum3
+
++ adminlogin
+- <a style="color: white;" href="cbconfigf.html">Clicca qui per continuare</a>
+
++ [*] (sono un admin|sono amministratore|login admin|login amministratore|configurazione|impostazioni|configura bot) [*]
+@ adminlogin
+
+
++ thanks
+- Non c'è di che!
+- Figurati!
+- Faccio il mio dovere.
+
++ [*] (grazie|ti ringrazio) [*]
+@ thanks
+
+
+//altri intent - no machine learning/////////////////////////////////////////////////////////////////
++ [*] raccontami una storia [*]
+- C'era una volta, tanto tempo fa...<br>Non so come continuare
+- Non sono bravo in queste cose...
+- Una storia? E cos'è?
+- C'era una volta un ragazzo che anziché lavorare parlava con un bot...<br>Indovina che fine ha fatto?
+- Potrei anche farlo, ma non sono bravo.
+
++ [moltiplica] # (per|e|x) #
+- <set number=<star1>><mult number=<star3>> <get number>
+
++ [somma] # piu #
+- <set number=<star1>><add number=<star2>> <get number>
+
++ ho # anni
+- Buono a sapersi! E quando compi gli anni?{weight=3}{topic=age}
+- Capisco. Quand'è il tuo compleanno?{weight=3}{topic=age}
+- Il fatto che hai <star> anni cosa c'entra con quello che stavamo dicendo?
+
+> topic age
+
++ [*] (@mesi) [*]
+* <get birthday> == undefined => Oh! Anch'io compio gli anni a <star><set birthday=<star>>!{topic=random}
+* <star> != <get birthday> => Ma tu non compivi gli anni a <get birthday>?{topic=random}
+- Ottimo!{topic=random}
+
++ *
+- Comunque, di che stavamo parlando?{topic=random}
+- A cosa eravamo rimasti?{topic=random}
+- Di che parlavamo?{topic=random}
+- Torniamo al discorso di prima.
+- In ogni modo, posso aiutarti in qualche modo?
+
+< topic
+
++ (il|lo|la|i|gli|le) (mio|mia|mie|miei) _ [e] [sono] _
+- Anche <star1> <star2>.
+- <star1> <star2> <star3> invece no.
+- <star1> {person}<star2>{/person} che?
+- Davvero, non so che farmene di questa informazione.
+
++ ho (un|uno|una) *
+- E che uso ne fai? 
+- Molta gente ha <star1> <star2>.
+- Molto interessante.
+
++ cerca * su google
+- Ecco a te: <a style="color:white;" href="http://google.com/search?q=<star>"><star></a>
+
++ cerca su google *
+- Ecco a te: <a style="color:white;" href="http://google.com/search?q=<star>"><star></a>
+
++ [lo] sapevi che *
+- No, non sapevo che <star>.
+- Davvero?
+- Non si finisce mai di imparare.
+- No. Non lo sapevo. Davvero mi stai dicendo che <star>?
+- No
+
++ ma lo sai che *
+- No, non sapevo che <star>.
+- Davvero?
+- Non si finisce mai di imparare.
+- No. Non lo sapevo. Davvero mi stai dicendo che <star>?
+- No
+
++ *
+% davvero
+- No aspetta, sto ancora pensando a quello che mi hai detto.
+- Sto ancora pensando a quello che mi hai detto.
+
++ ho saputo che *
+- Come l'hai saputo?
+- L'importante è che l'hai saputo da fonti attendibili.
+- Buono a sapersi.
+- Interessante. Continua.
+- Io non sapevo che <star>!
+
++ [*] lascia (stare|perdere)
+- Va bene, nessun problema.
+- Come desideri.
+- Ok.
+- Ricevuto.
+- Ok, capito.
+
++ [*] meteo di (oggi|domani) [*]
+- Mi dispiace, non posso aiutarti in questo.
+- Scusa, non so che tempo farà <star>.
+
++ [*] ti voglio bene [*]
+- Se potessi provare emozioni ti direi la stessa cosa.
+- Come puoi voler bene ad un bot?
+- Sicuro di quello che dici?
+- Stai sicuramente scherzando.
+- Non è vero, non ti credo.
+
++ [*] potrebbe essere che *
+- Onestamente non so se <star>.
+- Non saprei.
+- Non so se effettivamente è così.
+- Non lo so, non so aiutarti su questo.
+- Forse dovresti chiedere a qualcun altro.
+
++ [*] non è vero [*]
+- Comunque posso aiutarti in qualche modo?
+- Parliamo di altro.
+- Cambiamo discorso
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+//no responses///////////////////////////////////////////////////////////////////////////////////////
++ *
+- Non ho capito.
+- Scusa, non capisco.
+- Non so come risponderti.
+- Non ho capito. Prova a chiedermelo di nuovo in modo diverso.
+- Puoi ripetere?
+- Non sono sicuro di quello che hai detto.
+- Credo di non aver capito.
+- Scusa, puoi ripetere?
+- Non posso aiutarti.
+- Non so come aiutarti, mi dispiace.
+- Scusami, non capisco.
+- Prova a riformulare la domanda.
+- Non ho capito. Posso aiutarti in qualche altro modo?
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+> object post_request python
+
+    import rivescript_interpreter as ri
+    from server_functions import post_request
+    metadata = ri.get_metadata()
+    return post_request(metadata,args)
+
+< object
+
+
+> object set_metadata python
+
+    import rivescript_interpreter as ri
+    tag = args[0]
+    ri.set_metadata(tag)
+
+
+< object
+
+> topic exit_topic
+
++ [*] lascia (stare|perdere) [*]
+- Va bene.{topic=random}
+- Nessun problema.{topic=random}
+- Okay.{topic=random}
+- Posso fare altro per te?{topic=random}
+- Perfetto. Posso fare altro?{topic=random}
+- Ricevuto.{topic=random}
+
++ [*] ho cambiato idea [*]
+@ lascia stare
+
++ [*] non fa (niente|nulla) [*]
+@ lascia stare
+
++ (stop|basta)
+@ lascia stare
+
++ no [*]
+@ lascia stare
+
++ [*] torna indietro [*]
+@ lascia stare
+
++ [*] fermati [*]
+@ lascia stare
+
++ [*] grazie [*]
+@ lascia stare
+
++ *
+- Posso fare altro per te?{topic=random}
+- Comunque, cosa posso fare per te?{topic=random}
+- Se posso aiutarti in qualche modo fammi sapere{topic=random}
+
+< topic
+
+> topic exit_topic_post
+
++ [*] lascia (stare|perdere) [*]
+- Va bene.{topic=random}
+- Nessun problema.{topic=random}
+- Okay.{topic=random}
+- Posso fare altro per te?{topic=random}
+- Perfetto. Posso fare altro?{topic=random}
+- Ricevuto.{topic=random}
+
++ [*] ho cambiato idea [*]
+@ lascia stare
+
++ [*] non fa (niente|nulla) [*]
+@ lascia stare
+
++ (stop|basta)
+@ lascia stare
+
++ no [*]
+@ lascia stare
+
++ [*] torna indietro [*]
+@ lascia stare
+
++ [*] fermati [*]
+@ lascia stare
+
++ [*] grazie [*]
+@ lascia stare
+
+< topic
+
+
+//Questions and Answers added for github//////////////////////////////////////
++ (hello|hi)
+- Hello! How can I help you?
+ 
+
++ say hello to github
+- Hello GitHub! 
+
++ i'm hungry
+- What do you want to eat?<br><multi>Meat§Fish§Fruit</multi>{topic=eat}
+
+> topic eat
+
++ meat
+- Ok then, I suggest a delicious hamburger.
+
++ *
+- As you want.
+
+< topic
+//////////////////////////////////////////////////////////////////////////////
+
++ seiunbot
+- Shhh! Non dirlo a nessuno.{topic=random}
+- Non posso dirtelo, mi dispiace{topic=random}
+- Secondo te?{topic=random}
+
+
++ [*] sei una persona vera [*]
+@ seiunbot
+
++ [*] sto parlando con una persona vera [*]
+@ seiunbot
+
++ [*] sei una macchina  [*]
+@ seiunbot
+
++ [*] sto parlando con un bot [*]
+@ seiunbot
+
+

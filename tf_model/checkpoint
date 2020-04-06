@@ -1,0 +1,2 @@
+model_checkpoint_path: "C:\\Users\\l.maddaluno\\PythonChatbotSorgenia\\engine\\dist\\server\\tf_model\\model.tflearn"
+all_model_checkpoint_paths: "C:\\Users\\l.maddaluno\\PythonChatbotSorgenia\\engine\\dist\\server\\tf_model\\model.tflearn"

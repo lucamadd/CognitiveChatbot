@@ -1,0 +1,63 @@
+{
+  "intents": [
+    {
+      "tag": "hello",
+      "patterns": [
+        "ciao",
+        "piacere di conoscerti",
+        "buonasera",
+        "buongiorno",
+        "salve"
+      ],
+      "context_set": ""
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Ti ringrazio",
+        "Grazie",
+        "Perfetto",
+        "Ottimo"
+      ],
+      "responses": [
+        "<msg>Non c'\u00e8 di che!</msg>",
+        "<msg>Figurati!</msg>",
+        "<msg>Faccio il mio dovere.</msg>"
+      ],
+      "context_set": ""
+    },
+    {
+      "tag": "adminlogin",
+      "patterns": [
+        "login admin",
+        "login amministratore",
+        "configurazione",
+        "impostazioni",
+        "configura bot",
+        "impostazioni bot"
+      ],
+      "context_set": ""
+    },
+    {
+      "tag": "no_response",
+      "patterns": "",
+      "responses": [
+        "Non ho capito.",
+        "Scusa, non capisco.",
+        "Non so come risponderti.",
+        "Non ho capito. Prova a chiedermelo di nuovo in modo diverso.",
+        "Puoi ripetere?",
+        "Non sono sicuro di quello che hai detto.",
+        "[ERR: No Reply Matched]",
+        "Credo di non aver capito.",
+        "Scusa, puoi ripetere?",
+        "Non posso aiutarti.",
+        "Non so come aiutarti, mi dispiace.",
+        "Scusami, non capisco.",
+        "Prova a riformulare la domanda.",
+        "Non ho capito. Posso aiutarti in qualche altro modo?"
+      ],
+      "context_set": ""
+    }
+  ]
+}

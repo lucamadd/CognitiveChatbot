@@ -1,0 +1,158 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/post.css">
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,300' rel='stylesheet' type='text/css'>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>  
+        <title>
+			Configurazione
+		</title>    
+        <link rel='icon' href='images/bot.png' type='image/x-icon'/ >
+        
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+    </head>
+    <body>
+            <!-- multistep form -->
+    <form id="msform">
+        <!-- progressbar -->
+        <ul id="progressbar">
+        <li class="active">tag</li>
+        <li>patterns</li>
+        <li>responses</li>
+        <li>context-set</li>
+        <li>context-filter</li>
+        <li>url</li>
+        <li>metadata</li>
+        </ul>
+        <!-- fieldsets -->
+        <fieldset>
+        <h2 class="fs-title">Titolo intent (tag)</h2>
+        <h3 class="fs-subtitle">Qui va inserito il titolo dell'intent da aggiungere.<br>
+			&Egrave; consigliabile non utilizzare due volte lo stesso tag, in quanto i tag
+			vengono utilizzati per discriminare le azioni da effettuare. <a href="tags.html">Qui</a>
+			è possibile visualizzare i tag attualmente utilizzati.</h3>
+        <input type="text" id="tag" required placeholder="Titolo intent" />
+        <input type="button" id="button1" name="next" disabled class="next action-button" value="Avanti >" />
+        </fieldset>
+        <fieldset>
+        <h2 class="fs-title">Richieste (Patterns)</h2>
+        <h3 class="fs-subtitle">Qui vanno inseriti i pattern di riconoscimento. <br>In breve, questi campi
+			rappresentano le domande dell'utente che matcheranno questo specifico intent.<br> Non c'è bisogno di utilizzare lettere maiuscole, né
+			segni di punteggiatura: i pattern vengono riconosciuti automaticamente.</h3>
+		<div class="field_wrapper">
+
+			<input type="text" class="multiple-input" id="pattern" name="patterns[]" value=""></input>
+			<input type="button" class="add-button" id = "addField" value="Aggiungi" ></input>	
+		</div>
+		</div> 
+        <input type="button" name="previous" class="previous action-button" value="< Indietro" />
+        <input type="button" id="button2" disabled name="next" class="next action-button" value="Avanti >" />
+        </fieldset>
+        <fieldset>
+        <h2 class="fs-title">Risposte (Responses)</h2>
+        <h3 class="fs-subtitle">Qui vanno inserite le risposte del bot. <br>
+			&Egrave; possibile inserire eventualmente più risposte, e il bot ne sceglierà una casualmente. Qui è necessario
+			utilizzare correttamente la punteggiatura, in quanto le risposte del bot vengono prese direttamente da questi campi.
+			<br><br><span class="badge badge-danger">N.B.</span>&nbsp;Cerca di essere preciso nella compilazione dei campi.
+			<br>Ad esempio, se la richiesta ha bisogno di un parametro <i>nome</i> e di un parametro <i>cognome</i>, una buona
+			risposta potrebbe essere: <code style="color: orangered;">Indicami nome e cognome</code>, oppure <code style="color: orangered;">Ho bisogno del nome e del cognome</code>. 
+			<br>Se non occorrono parametri aggiuntivi, è comunque necessario un altro messaggio da parte dell'utente per avviare la 
+			richiesta, per cui è consigliabile comunque inserire una risposta, magari per chiedere conferma all'utente.
+			<br><br>In entrambi i casi è consigliabile impostare un contesto alla pagina successiva.&Egrave; 
+			possibile anche inserire delle risposte multiple per guidare l'utente nella sua scelta. In questo caso utilizza il tasto
+			<b>Aggiungi risposta multipla</b> presente qui sotto.
+		</h3>
+		<div class="field_wrapper2">
+			<input type="text" class="multiple-input" id="response" name="responses[]" value=""></input>
+			<input type="button" class="add-button" id = "addField2" value="Aggiungi" ></input>	
+		</div>
+		<div class="field_wrapper4" style="align-items: center;">
+			<input type="button" class="add-multi-button" id = "addMulti" value="Aggiungi risposta multipla" ></input>	
+		</div>
+        <input type="button" name="previous" class="previous action-button" value="< Indietro" />
+        <input type="button" id="button3" disabled name="next" class="next action-button" value="Avanti >" />
+		</fieldset>
+		<fieldset>
+			<h2 class="fs-title">Scelta di un contesto (Context set)</h2>
+			<h3 class="fs-subtitle">&Egrave; possibile creare un contesto nel quale entrare dopo questa interazione con il bot.
+				Quando viene creato un contesto, l'interazione successiva con il bot entra a far parte automaticamente di questo
+				contesto. Successivamente è possibile innestare un ulteriore contesto oppure passare al contesto precedente.
+			</h3>	
+					<h3 class="fs-subtitle" style="text-align: left;">- Se vuoi creare un contesto, inserisci il nome del contesto nel campo sottostante.
+						<br>
+						- Se vuoi restare nel contesto attuale, rendi vuoto questo campo.
+						<br>
+						- Se sei in un contesto e vuoi tornare al contesto principale, lascia <b>random</b> nel campo sottostante.
+						<br>
+					</h3>
+				<h3 class="fs-subtitle"><span class="badge badge-danger">N.B.</span>&nbsp;Indica il nome del contesto in cui verrà inserito l'intent.
+					Quando l'utente entrerà nel contesto potrà inserire i dati per effettuare correttamente la richiesta, oppure
+					potrà terminare l'operazione indicandolo al bot, con una frase del tipo <code style="color: orangered;">Stop</code> oppure <code style="color: orangered;">Lascia stare</code>.Per evitare conflitti tra contesti diversi, è consigliabile utilizzare un identificativo diverso per ogni contesto.
+					<br>Clicca <a href="contexts.html">qui</a> per visualizzare i nomi dei contesti attualmente presenti nel sistema.
+				<br>Il nome del contesto non deve contenere spazi.</h3>
+			<input type="text" id="context_set" placeholder="Contesto"  />
+			<input type="button" name="previous" class="previous action-button" value="< Indietro" />
+			<input type="button"  id="button4" name="next" class="next action-button" value="Avanti >" />
+		</fieldset>
+		<fieldset>
+			<h2 class="fs-title">Contesto di appartenenza (Context filter)</h2>
+			<h3 class="fs-subtitle"><span class="badge badge-danger">N.B.</span>&nbsp;In una richiesta POST questo campo dev'essere lasciato vuoto, 
+				in quanto dovrebbe essere possibile accedere alle richieste POST da qualsiasi contesto.
+			</h3>
+			<input type="text" id="context_filter" disabled placeholder="Contesto di appartenenza" />
+			<input type="button" name="previous" class="previous action-button" value="< Indietro" />
+        <input type="button" id="button3"  name="next" class="next action-button" value="Avanti >" />
+		</fieldset>
+        <fieldset>
+			<h2 class="fs-title">URL</h2>
+			<h3 class="fs-subtitle">Inserisci qui l'URL verso il quale verrà inoltrata la richiesta HTTP. Se sono necessari dei parametri, puoi settarli
+                nella scheda successiva.</h3>
+			<input type="text" id="url" placeholder="URL" />
+            <input type="button" name="previous" class="previous action-button" value="< Indietro" />
+        <input type="button" id="button5" disabled name="next" class="next action-button" value="Avanti >" />
+		</fieldset>
+        <fieldset>
+			<h2 class="fs-title">Parametri della richiesta (metadata)</h2>
+			<h3 class="fs-subtitle">I parametri necessari alla richiesta possono essere inseriti nei campi sottostanti. Controlla
+                con attenzione il nome esatto dei parametri prima di inserirli.
+                <br>Se la richiesta non ha bisogno di parametri aggiuntivi, lascia vuoto questo campo.
+                <br><br><span class="badge badge-danger">N.B.</span>&nbsp; Il risultato della richiesta HTTP verrà inviato come risposta
+                da parte del bot. Nel caso di risultati complessi, è necessario gestire il comportamento del bot tramite codice.
+            </h3>
+			<div class="field_wrapper3">
+				<input type="text" class="multiple-input" name="params[]" value=""></input>
+				<input type="button" class="add-button" id = "addField3" value="Aggiungi" ></input>	
+			</div>
+			<input type="button" name="previous" id="backButton" class="previous action-button" value="< Indietro" />
+			<input type="button" name="next" id="addButton" class="final-action-button" onclick="addAction()" value="Crea intent"/>
+			<button class="final-action-button-loading" hidden id="addButton2"></button>
+		</fieldset>
+	</form>
+	<div style="text-align: center; ">
+		<a href="cbconfigf.html" style="color: white; position:sticky;">< Indietro</a>
+	</div>
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+	<script src="js/post.js"></script>
+	<script>
+	$(document).ready( function() {
+		if (typeof(Storage) !== "undefined") {
+            if (sessionStorage.logged){
+				//donothing
+			}
+			else {
+				window.location.href = "/cbconfigf.html";
+			}
+		} else {
+			alert('Sorry! This browser does not support sessionStorage. Please switch to another browser to access this page.');
+			//document.referrer;
+		}
+	});
+    $('#addAction').click(function() {
+        return false;
+    });
+    </script>
+    
+</html>

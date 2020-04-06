@@ -1,0 +1,120 @@
+{
+    "tests": [
+      {
+        "right_tag": "hello",
+        "questions": [
+          "ciao bot",
+          "piacare di consocerti",
+          "buonasera bot",
+          "buongiorno",
+          "salve bot",
+          "ciao"
+        ]
+      },
+      {
+        "right_tag": "presentation",
+        "questions": [
+          "come ti chiami",
+          "como ti chiamo",
+          "cometi chiami",
+          "presentati"
+        ]
+      },
+      {
+        "right_tag": "what to do",
+        "questions": [
+          "cosa puoi fare",
+          "aiutami",
+          "dimmi cosa puoi fare",
+          "dimmi come puoi aiutarmi",
+          "cosq puoi fare",
+          "come poi aiutarmi",
+          "come puoi aiutarmi"
+        ]
+      },
+      {
+        "right_tag": "how-are-you",
+        "questions": [
+         "come stai",
+         "come stai bot",
+         "comw stai",
+         "tutto ebne",
+         "tutto bene"
+        ]
+      },
+      {
+        "right_tag": "thanks",
+        "questions": [
+         "grazie bot",
+         "ok grazie",
+         "grazie mille",
+         "ti ringrazio",
+         "graziw",
+         "graazie",
+         "ok perfetto"
+        ]
+      },
+      {
+        "right_tag": "argum1",
+        "questions": [
+          "sto perdenro tempo",
+          "mi sati facendo perdere tempo",
+          "sto perdendo tempo"
+        ]
+      },
+      {
+        "right_tag": "argum2",
+        "questions": [
+            "puoi fare di meglio",
+            "puoi fate di meglio grazie"
+        ]
+      },
+      {
+        "right_tag": "argum3",
+        "questions": [
+            "aiutami",
+            "come posso fare",
+            "come devo fare",
+            "dimmi come fare"
+        ]
+      },
+      {
+        "right_tag": "adminlogin",
+        "questions": [
+         "impostazioni",
+         "impostazioni bot",
+         "impostazioni boy",
+         "configura bot",
+         "configurazipne",
+         "configurazione",
+         "admin login",
+         "entra admin",
+         "voglio confiruraer il bot",
+         "configursione bot",
+         "sonp un amdin"
+        ]
+      },
+      {
+        "right_tag": "no_response",
+        "questions": [
+            "cosa posso fare secondo te",
+            "com'è il meteo caro amico mio",
+            "non sono sicuro su cosa chiederti",
+            "ieri ho mangiato un piatto di pasta",
+            "è nato prima l'uovo o la gallina",
+            "buon pomeriggio bot",
+            "non so se sono un admin",
+            "vorrei aggiungere nuove azioni",
+            "credo di essere una persona allegra"
+        ]
+      },
+      {
+        "right_tag": "seiunbot",
+        "questions": [
+            "ma sei un bot",
+            "per caso sei un bot",
+            "ma non sei una persona"
+        ]
+      }
+    ]
+  }

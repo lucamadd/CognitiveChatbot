@@ -1,0 +1,214 @@
+{
+  "results": [
+    {
+      "question": "ciao bot",
+      "right_tag": "hello",
+      "predicted_tag": "hello"
+    },
+    {
+      "question": "piacare di consocerti",
+      "right_tag": "hello",
+      "predicted_tag": "hello"
+    },
+    {
+      "question": "buonasera bot",
+      "right_tag": "hello",
+      "predicted_tag": "hello"
+    },
+    {
+      "question": "buongiorno",
+      "right_tag": "hello",
+      "predicted_tag": "hello"
+    },
+    {
+      "question": "salve bot",
+      "right_tag": "hello",
+      "predicted_tag": "hello"
+    },
+    {
+      "question": "ciao",
+      "right_tag": "hello",
+      "predicted_tag": "hello"
+    },
+    {
+      "question": "come ti chiami",
+      "right_tag": "presentation",
+      "predicted_tag": "presentation"
+    },
+    {
+      "question": "como ti chiamo",
+      "right_tag": "presentation",
+      "predicted_tag": "presentation"
+    },
+    {
+      "question": "presentati",
+      "right_tag": "presentation",
+      "predicted_tag": "presentation"
+    },
+    {
+      "question": "cosa puoi fare",
+      "right_tag": "what to do",
+      "predicted_tag": "what to do"
+    },
+    {
+      "question": "dimmi cosa puoi fare",
+      "right_tag": "what to do",
+      "predicted_tag": "what to do"
+    },
+    {
+      "question": "dimmi come puoi aiutarmi",
+      "right_tag": "what to do",
+      "predicted_tag": "what to do"
+    },
+    {
+      "question": "cosq puoi fare",
+      "right_tag": "what to do",
+      "predicted_tag": "whats my name"
+    },
+    {
+      "question": "come poi aiutarmi",
+      "right_tag": "what to do",
+      "predicted_tag": "no_response"
+    },
+    {
+      "question": "come puoi aiutarmi",
+      "right_tag": "what to do",
+      "predicted_tag": "what to do"
+    },
+    {
+      "question": "come stai",
+      "right_tag": "how-are-you",
+      "predicted_tag": "how-are-you"
+    },
+    {
+      "question": "come stai bot",
+      "right_tag": "how-are-you",
+      "predicted_tag": "how-are-you"
+    },
+    {
+      "question": "grazie bot",
+      "right_tag": "thanks",
+      "predicted_tag": "thanks"
+    },
+    {
+      "question": "ok grazie",
+      "right_tag": "thanks",
+      "predicted_tag": "thanks"
+    },
+    {
+      "question": "grazie mille",
+      "right_tag": "thanks",
+      "predicted_tag": "thanks"
+    },
+    {
+      "question": "ti ringrazio",
+      "right_tag": "thanks",
+      "predicted_tag": "thanks"
+    },
+    {
+      "question": "ok perfetto",
+      "right_tag": "thanks",
+      "predicted_tag": "thanks"
+    },
+    {
+      "question": "sto perdenro tempo",
+      "right_tag": "argum1",
+      "predicted_tag": "argum1"
+    },
+    {
+      "question": "sto perdendo tempo",
+      "right_tag": "argum1",
+      "predicted_tag": "argum1"
+    },
+    {
+      "question": "puoi fare di meglio",
+      "right_tag": "argum2",
+      "predicted_tag": "argum2"
+    },
+    {
+      "question": "puoi fate di meglio grazie",
+      "right_tag": "argum2",
+      "predicted_tag": "presentation"
+    },
+    {
+      "question": "come devo fare",
+      "right_tag": "argum3",
+      "predicted_tag": "argum3"
+    },
+    {
+      "question": "dimmi come fare",
+      "right_tag": "argum3",
+      "predicted_tag": "argum3"
+    },
+    {
+      "question": "impostazioni",
+      "right_tag": "adminlogin",
+      "predicted_tag": "adminlogin"
+    },
+    {
+      "question": "impostazioni bot",
+      "right_tag": "adminlogin",
+      "predicted_tag": "adminlogin"
+    },
+    {
+      "question": "impostazioni boy",
+      "right_tag": "adminlogin",
+      "predicted_tag": "adminlogin"
+    },
+    {
+      "question": "configura bot",
+      "right_tag": "adminlogin",
+      "predicted_tag": "adminlogin"
+    },
+    {
+      "question": "configurazione",
+      "right_tag": "adminlogin",
+      "predicted_tag": "adminlogin"
+    },
+    {
+      "question": "admin login",
+      "right_tag": "adminlogin",
+      "predicted_tag": "adminlogin"
+    },
+    {
+      "question": "entra admin",
+      "right_tag": "adminlogin",
+      "predicted_tag": "adminlogin"
+    },
+    {
+      "question": "configursione bot",
+      "right_tag": "adminlogin",
+      "predicted_tag": "adminlogin"
+    },
+    {
+      "question": "cosa posso fare secondo te",
+      "right_tag": "no_response",
+      "predicted_tag": "what to do"
+    },
+    {
+      "question": "com'\u00e8 il meteo caro amico mio",
+      "right_tag": "no_response",
+      "predicted_tag": "whats my name"
+    },
+    {
+      "question": "non sono sicuro su cosa chiederti",
+      "right_tag": "no_response",
+      "predicted_tag": "not-fine"
+    },
+    {
+      "question": "buon pomeriggio bot",
+      "right_tag": "no_response",
+      "predicted_tag": "adminlogin"
+    },
+    {
+      "question": "credo di essere una persona allegra",
+      "right_tag": "no_response",
+      "predicted_tag": "seiunbot"
+    },
+    {
+      "question": "per caso sei un bot",
+      "right_tag": "seiunbot",
+      "predicted_tag": "seiunbot"
+    }
+  ]
+}

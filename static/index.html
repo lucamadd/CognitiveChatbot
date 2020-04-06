@@ -1,0 +1,230 @@
+<!DOCTYPE html><html class=''>
+<head>
+    <title>Cognitive Chatbot</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">  
+    <link rel="stylesheet" href="css/index.css">  
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link href='css/fonts.css' rel='stylesheet' type='text/css'>
+    <link rel='icon' href='images/bot.png' type='image/x-icon'/ >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://use.typekit.net/hoy3lrg.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'><link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css'>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: #27ae60;
+            font-family: "proxima-nova", "Source Sans Pro", sans-serif;
+            font-size: 1em;
+            letter-spacing: 0.1px;
+            color: #32465a;
+            text-rendering: optimizeLegibility;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+            -webkit-font-smoothing: antialiased;
+        }
+        a:hover {
+            color: #7DDDE9;
+        }
+    </style>
+</head>
+<body>
+    <div id="frame">
+        <div class="content">
+            <div class="contact-profile">
+                <img src="images/bot.png" alt="" />
+                <p>Cognitive Chatbot</p>
+            </div>
+            <div class="messages">
+                <ul id="messageslist"></ul>
+            </div>
+            <div class="message-input">
+                <div class="wrap">
+                    <input type="text" placeholder="Scrivi un messaggio" />
+                    <button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="addIntent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Configurazione bot</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    var  API_ROOT='http://localhost:8080/backend';
+    $( document ).ready(function() {
+        callBot('Ciao');
+    });
+    $(".messages").animate({ scrollTop: $(document).height()+$(window).height() }, "fast");
+    $("#profile-img").click(function() {
+        $("#status-options").toggleClass("active");
+    });
+
+    $(".expand-button").click(function() {
+        $("#profile").toggleClass("expanded");
+        $("#contacts").toggleClass("expanded");
+    });
+
+    $("#status-options ul li").click(function() {
+        $("#profile-img").removeClass();
+        $("#status-online").removeClass("active");
+        $("#status-away").removeClass("active");
+        $("#status-busy").removeClass("active");
+        $("#status-offline").removeClass("active");
+        $(this).addClass("active");
+
+        if($("#status-online").hasClass("active")) {
+            $("#profile-img").addClass("online");
+        } else if ($("#status-away").hasClass("active")) {
+            $("#profile-img").addClass("away");
+        } else if ($("#status-busy").hasClass("active")) {
+            $("#profile-img").addClass("busy");
+        } else if ($("#status-offline").hasClass("active")) {
+            $("#profile-img").addClass("offline");
+        } else {
+            $("#profile-img").removeClass();
+        };
+
+        $("#status-options").removeClass("active");
+    });
+
+    function newMessage() {
+        $('.btn').remove();
+        message = $(".message-input input").val();
+        if($.trim(message) == '') {
+            return false;
+        }
+        $('<li class="replies"><img src="images/user.png" alt="" /><p>' + message + '</p></li>').appendTo($('.messages ul'));
+        $('.message-input input').val(null);
+        $('.contact.active .preview').html('<span>You: </span>' + message);
+        var scroll=$('.messages');
+        scroll.animate({scrollTop: scroll.prop("scrollHeight")});
+        setTimeout(() => { botIsTyping(); }, 500);
+        setTimeout(function (){ callBot(message); }, 2000); 
+    };
+
+    function multichoiceMessage(message) {
+        if (message == 'Segnala bug'){
+            reportBug();
+        }
+        $('.btn').remove();
+        if($.trim(message) == '') {
+            return false;
+        }
+        $('<li class="replies"><img src="images/user.png" alt="" /><p>' + message + '</p></li>').appendTo($('.messages ul'));
+        $('.message-input input').val(null);
+        $('.contact.active .preview').html('<span>You: </span>' + message);
+        var scroll=$('.messages');
+        scroll.animate({scrollTop: scroll.prop("scrollHeight")});
+        setTimeout(() => { botIsTyping(); }, 500);
+        setTimeout(function (){ callBot(message); }, 2000); 
+    };
+
+    function botIsTyping() {
+        $('<li id="isTyping" class="sent"><img src="images/bot.png" alt="" /><p style="font-weight: bolder"><span class="one">&nbsp;.&nbsp;</span><span class="two">.&nbsp;</span><span class="three">.&nbsp;</span></p></li>').appendTo($('.messages ul'));
+        $('.message-input input').val(null);
+        var scroll=$('.messages');
+        scroll.animate({scrollTop: scroll.prop("scrollHeight")});
+    };
+
+    function newBotMessage(message, multichoice) {
+        $('.btn').remove();
+        if($.trim(message) == '') {
+            return false;
+        }
+        while (document.getElementById("isTyping")) 
+            $("#isTyping").remove();
+        if (multichoice == false){
+            $('<li class="sent"><img src="images/bot.png" alt="" /><p>' + message + '</p></li>').appendTo($('.messages ul'));
+            $('.message-input input').val(null);
+            $('.contact.active .preview').html('<span>You: </span>' + message);
+        } else {
+            var choices = multichoice.split('§');
+            var html_field = '';
+            html_field += '<li class="sent"><img src="images/bot.png" alt="" /><p>' + message + '</p>';
+            html_field += '</li>'
+            $(html_field).appendTo($('.messages ul'));
+            setTimeout(() => {
+                var html_field2 = '<li class="sent">';
+                html_field2 += '<img src="images/blank.png" alt="" />'
+                for (i=0;i<choices.length;i++){
+                    if (i > 0 && i%2 == 0){
+                        html_field2 += '<br><br><img src="images/blank.png" alt="" />'
+                    }
+                    html_field2 += '<p onclick="multichoiceMessage(this.innerHTML);" class="btn">' + choices[i] + '</p>'
+                }
+                html_field2 += '</li>'
+                $(html_field2).appendTo($('.messages ul'));
+            },400)
+        }
+        var scroll=$('.messages');
+        scroll.animate({scrollTop: scroll.prop("scrollHeight")});
+    };
+
+    function callBot(msg){
+        $.ajax({
+            type: 'POST',
+            url: API_ROOT,
+            data: { 
+                'msg': msg, 
+            },
+            success: function(data){
+                var jsonData=JSON.parse(data);
+                var multichoice = false;
+                if (jsonData.message.includes('<multi>')){
+                    multichoice = jsonData.message.substring(jsonData.message.lastIndexOf("<multi>") + 7, jsonData.message.lastIndexOf("</multi>"));
+                    jsonData.message = jsonData.message.substring(0,jsonData.message.lastIndexOf("<multi>"))
+                } 
+                newBotMessage(jsonData.message, multichoice);
+            }
+        });
+    }
+
+    $('.submit').click(function() {
+        newMessage();
+    });
+
+    $(window).on('keydown', function(e) {
+        if (e.which == 13) {
+            newMessage();
+            return false;
+        }
+    });
+
+    $('#bugIcon').click( function() {
+        callBot('bugsegnalation');
+        $('#bugIcon').hide();
+        setTimeout(() => { $('#bugIcon').show(); }, 10000);
+    })
+
+    function reportBug(){
+        var ul = document.getElementById("messageslist");
+        var items = ul.getElementsByTagName("li");
+        var bug = '';
+        for (var i = 0; i < items.length; ++i) {
+            if (items[i].className == 'sent')
+                bug += '-BOT:' + items[i].innerText + '\n';
+            else
+                bug += '-USER:' + items[i].innerText + '\n';
+        }
+        bug = bug.toString();
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:5050/reportbug?bug='+bug
+        });
+    }
+    </script>
+</body>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</html>

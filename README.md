@@ -21,4 +21,5 @@ therefore Italian only is supported. However, these libraries can be easily swap
 <br>
 This example uses pattern ricognition module:
 <br>
+
 ![screen1](/static/images/chatbot1.gif)

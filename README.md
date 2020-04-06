@@ -4,7 +4,7 @@ Customizable multi-platform chatbot written in Python and RiveScript
 
 ## Description
 
-This project is part of my thesis work at the Federico II University of Naples. The work consists in a complete design and development of a multi-platform virtual assistant. The aim of the project is to develop a chatbot capable of help people in daily tasks: despite this was implemented to help customer service operators, it can be customized to perform a lot of actions.
+This project is part of my thesis work while attending Federico II University of Naples. The work consists in a complete design and development of a multi-platform virtual assistant. The aim of the project is to develop a chatbot capable of help people in daily tasks: despite this was implemented to help customer service operators, it can be customized to perform a lot of actions.
 <br>The chatbot has three key functions:
 - speech customization
 - admin profile support

@@ -1,6 +1,4 @@
-# WORK IN PROGRESS AT THE MOMENT
-
-# CognitiveChatbot
+# Cognitive Chatbot
 
 Customizable multi-platform chatbot written in Python and RiveScript
 
@@ -20,5 +18,17 @@ The architecture of the chatbot can be divided in two modules:
 therefore Italian only is supported. However, these libraries can be easily swapped with other libraries.
 <br>
 This example uses pattern recognition module:
+<br>
+<img src="https://raw.githubusercontent.com/lucamadd/CognitiveChatbot/master/static/images/chatbot1.gif" title="chatbot1" height="400">
+
+Machine Learning module is based on a deep neural network, as shown in the picture.
 <br><br>
-<img src="/static/images/chatbot1.gif" title="chatbot1">
+<img src="/static/images/Neural Network.png" title="dnn" height="300">
+
+Multiple answers are supported in every language.
+<br>
+<img src="https://raw.githubusercontent.com/lucamadd/CognitiveChatbot/master/static/images/chatbot2.gif" title="chatbot2" height="400">
+
+## Customization
+
+New questions and answers can be added via simple workflows by an admin. The chatbot can send HTTP requests with parameters, however program logic to fetch the request/send a response must be implemented server-side.

@@ -18,17 +18,30 @@ The architecture of the chatbot can be divided in two modules:
 therefore Italian only is supported. However, these libraries can be easily swapped with other libraries.
 <br>
 This example uses pattern recognition module:
-<br>
+<br><br>
 <img src="https://raw.githubusercontent.com/lucamadd/CognitiveChatbot/master/static/images/chatbot1.gif" title="chatbot1" height="400">
 
 Machine Learning module is based on a deep neural network, as shown in the picture.
 <br><br>
 <img src="/static/images/Neural Network.png" title="dnn" height="300">
 
+Nested topics are supported. You can restrict user's questions on a specific topic. More info on <a href="https://www.rivescript.com/">RiveScript site</a>
 Multiple answers are supported in every language.
-<br>
+<br><br>
 <img src="https://raw.githubusercontent.com/lucamadd/CognitiveChatbot/master/static/images/chatbot2.gif" title="chatbot2" height="400">
 
 ## Customization
 
-New questions and answers can be added via simple workflows by an admin. The chatbot can send HTTP requests with parameters, however program logic to fetch the request/send a response must be implemented server-side.
+New questions and answers can be added via simple workflows as an admin. The chatbot can send HTTP requests with parameters, however program logic to fetch the request/send a response must be implemented server-side.
+
+## Usage
+
+- Make sure your Python version is 3.6.5
+- Run ```pip install -r requirements.txt```
+- Run the file ```serverflask.py```, optionally defining a port to listen on. (default 8080)
+- Open your browser and go to http://localhost:8080 (or the port you've defined)
+- Done!
+
+## Notes
+
+This is a demo. You may add new interactions with the chatbot by accessing settings page. You can't remove old interactions at the moment, unless you edit configuration files directly. Most dialogues are in Italian in this version, and keep in mind that machine learning module won't work in other languages. Pattern recognition module works in every language instead, as well as multiple answers.
